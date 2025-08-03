@@ -1,26 +1,11 @@
 using System;
 using System.IO;
+using System.IO.Abstractions;
+using codecrafters_git;
 
-if (args.Length < 1)
-{
-    Console.WriteLine("Please provide a command.");
-    return;
-}
+var git = new GitApp(args, new FileSystem());
+git.RunCommand();
 
-// You can use print statements as follows for debugging, they'll be visible when running tests.
-Console.Error.WriteLine("Logs from your program will appear here!");
-
-string command = args[0];
-
-if (command == "init")
-{
-    // Uncomment this block to pass the first stage
-    Directory.CreateDirectory(".git");
-    Directory.CreateDirectory(".git/objects");
-    Directory.CreateDirectory(".git/refs");
-    File.WriteAllText(".git/HEAD", "ref: refs/heads/main\n");
-    Console.WriteLine("Initialized git directory");
-}
 // else if (command == "cat-file")
 // {
     
