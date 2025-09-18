@@ -1,5 +1,6 @@
+using System;
+using System.IO.Compression;
 using System.IO.Abstractions;
-
 namespace codecrafters_git;
 
 public class GitApp
@@ -33,6 +34,15 @@ public class GitApp
             Console.WriteLine("Initialized git directory");
         }
         
+        else if (command == "cat-file")
+        {
+            var file = _args[2];
+
+            FileStream input = File.OpenRead(file);
+            ZLibStream decompressedFile = new ZLibStream(input, CompressionMode.Decompress);
+            StreamReader reader = new StreamReader(decompressedFile);
+            Console.WriteLine(reader);
+        }
     }
     
 }
