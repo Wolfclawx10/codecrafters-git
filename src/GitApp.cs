@@ -40,7 +40,7 @@ public class GitApp
             
             var splitFile = file.Split('/');
 
-            FileStream input = File.OpenRead(splitFile[3]);
+            FileStream input = File.OpenRead(splitFile[2]);
             ZLibStream decompressedFile = new ZLibStream(input, CompressionMode.Decompress);
             StreamReader reader = new StreamReader(decompressedFile);
             Console.WriteLine(reader);
