@@ -38,7 +38,7 @@ public class GitApp
         {
             var file = _args[2];
             
-            var splitFile = file.Split(/)
+            var splitFile = file.Split(/);
 
             FileStream input = File.OpenRead(splitFile[3]);
             ZLibStream decompressedFile = new ZLibStream(input, CompressionMode.Decompress);
