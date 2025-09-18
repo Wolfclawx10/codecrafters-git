@@ -1,6 +1,8 @@
 using System;
 using System.IO.Compression;
 using System.IO.Abstractions;
+using System.Text;
+
 namespace codecrafters_git;
 
 public class GitApp
@@ -39,7 +41,7 @@ public class GitApp
             FileStream file = new($".git/objects/{_args[2][..2]}/{_args[2][2..]}",
                 FileMode.Open, FileAccess.Read);
             ZLibStream decompressedFile = new ZLibStream(file, CompressionMode.Decompress);
-            StreamReader reader = new StreamReader(decompressedFile);
+            StreamReader reader = new StreamReader(decompressedFile,Encoding.UTF8);
             Console.WriteLine(reader);
         }
     }
