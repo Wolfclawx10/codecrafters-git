@@ -37,8 +37,10 @@ public class GitApp
         else if (command == "cat-file")
         {
             var file = _args[2];
+            
+            var splitFile = file.Split(/)
 
-            FileStream input = File.OpenRead(file);
+            FileStream input = File.OpenRead(splitFile[3]);
             ZLibStream decompressedFile = new ZLibStream(input, CompressionMode.Decompress);
             StreamReader reader = new StreamReader(decompressedFile);
             Console.WriteLine(reader);
