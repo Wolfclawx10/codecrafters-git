@@ -42,7 +42,7 @@ public class GitApp
                 FileMode.Open, FileAccess.Read);
             ZLibStream decompressedFile = new ZLibStream(file, CompressionMode.Decompress);
             StreamReader reader = new StreamReader(decompressedFile,Encoding.UTF8);
-            Console.WriteLine(reader.ReadToEnd().Split('\x00')[1]);
+            Console.Write(reader.ReadToEnd().Split('\x00')[1]);
         }
     }
     
